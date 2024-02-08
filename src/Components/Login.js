@@ -1,17 +1,29 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import Header from './/Header'
+import { CheckValidData } from '../Utilis/ValidateData'
 
 
 const Login = () => {
 
-
+    const email = useRef(null)
+    const password = useRef(null)
 
     const [isSignForm,setIsSignForm] = useState(true)
+    const [errorMess,setErrorMess] = useState([])
 
     const handleSignInSignUpForm = () => {
         setIsSignForm(!isSignForm)
     }
 
+    console.log(errorMess)
+    const handleValidation = () => {
+
+        const message = CheckValidData(email.current.value,password.current.value)
+
+        console.log(message)
+
+        setErrorMess(message)
+    }
 
 
     return (
@@ -23,18 +35,17 @@ const Login = () => {
            </div>
 
 
-            <form action="" className="absolute w-3/12 p-10 bg-black my-36 mx-[530px]  text-white bg-opacity-80 rounded-lg">
+            <form onSubmit={(e)=>e.preventDefault()} className="absolute w-3/12 p-10 bg-black my-36 mx-[530px] text-white bg-opacity-80 rounded-lg">
                     
                     <h2 className=' font-bold text-2xl p-1 my-3'> {isSignForm ? 'Sign In' : 'Sign Up'}</h2>
                     {!isSignForm && <input type="text" placeholder="Enter Full Name" className='w-full bg-gray-800 p-3 my-4 rounded-lg '/>}
-                    <input type="text" placeholder="Email Addresss" className='w-full bg-gray-800 p-3 my-4 rounded-lg '/>
+                    <input type="text" ref={email} placeholder="Email Addresss" className='w-full bg-gray-800 p-3 my-4 rounded-lg '/>
 
-                    <input type="password" placeholder="Password" className='w-full  bg-gray-800 p-3 my-4 rounded-lg'/>
+                    <input type="password" ref={password} placeholder="Password" className='w-full  bg-gray-800 p-3 my-4 rounded-lg'/>
 
-                    <button className="bg-red-700 w-full p-3 my-6 rounded-lg" >{isSignForm ? 'Sign In' : 'Sign Up'}</button>
-                
+                    <button className="bg-red-700 w-full p-3 my-6 rounded-lg" onClick={handleValidation}>{isSignForm ? 'Sign In' : 'Sign Up'}</button>
+                    <p className='text-red-700'>Password is Inavlid :{errorMess}</p>
                     <p className='p-1 my-3 cursor-pointer' onClick={handleSignInSignUpForm}>{isSignForm ? 'New to Netflix? Sign Up Now' : 'Already Registred? Sign In Now'}</p>
-
                 </form>
            
            
