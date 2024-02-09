@@ -7,8 +7,9 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { auth } from "../Utilis/Firebase";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addUser } from "../Utilis/UserSlice";
+import { USER_AVTAR } from "../Utilis/Constant";
 
 const Login = () => {
   
@@ -49,13 +50,13 @@ const Login = () => {
 
           updateProfile(auth.currentUser, {
             displayName: name.current.value,
-            photoURL: "https://example.com/jane-q-user/profile.jpg",
+            photoURL: USER_AVTAR,
           })
             .then(() => {
               // Profile updated!
               // ...
-              const {uid,email,displayName} = auth.currentUser
-              dispatch(addUser({uid:uid,email:email,displayName:displayName}))
+              const {uid,email,displayName,photoURL} = auth.currentUser
+              dispatch(addUser({uid:uid,email:email,displayName:displayName,photoURL:photoURL}))
             
             })
             .catch((error) => {
