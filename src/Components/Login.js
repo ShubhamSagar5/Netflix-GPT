@@ -4,17 +4,21 @@ import { CheckValidData } from "../Utilis/ValidateData";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  updateProfile,
 } from "firebase/auth";
 import { auth } from "../Utilis/Firebase";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { addUser } from "../Utilis/UserSlice";
 
 const Login = () => {
   
-    const email = useRef(null);
-    const password = useRef(null);
-    const name = useRef(null)
+  const email = useRef(null);
+  const password = useRef(null);
+  const name = useRef(null);
 
-    const navigate = useNavigate()
+  const navigate = useNavigate();
+  const dispatch = useDispatch()
 
   const [isSignInForm, setIsSignInForm] = useState(true);
   const [errorMess, setErrorMess] = useState();
@@ -41,13 +45,25 @@ const Login = () => {
           // Signed up
           const user = userCredential.user;
           // ...
-          email.current.value =''
-          password.current.value =''
-          name.current.value=''
+          email.current.value = "";
+          password.current.value = "";
 
-          navigate('/browse')
-
-          
+          updateProfile(auth.currentUser, {
+            displayName: name.current.value,
+            photoURL: "https://example.com/jane-q-user/profile.jpg",
+          })
+            .then(() => {
+              // Profile updated!
+              // ...
+              const {uid,email,displayName} = auth.currentUser
+              dispatch(addUser({uid:uid,email:email,displayName:displayName}))
+              navigate("/browse");
+            })
+            .catch((error) => {
+              // An error occurred
+              // ...
+            });
+          name.current.value = "";
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -66,17 +82,17 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-        
-          email.current.value =''
-          password.current.value =''
 
-          navigate('/browse')
+          email.current.value = "";
+          password.current.value = "";
+
+          navigate("/browse");
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
 
-          setErrorMess(errorCode +"-"+ errorMess)
+          setErrorMess(errorCode + "-" + errorMess);
         });
     }
   };
