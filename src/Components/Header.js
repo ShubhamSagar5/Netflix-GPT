@@ -1,12 +1,17 @@
-import { signOut } from "firebase/auth";
+import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../Utilis/Firebase";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { addUser, removeUser } from "../Utilis/UserSlice";
 
 const Header = () => {
   
 const navigate = useNavigate()
+const dispatch = useDispatch()
 const user = useSelector((store)=>store.User)
+
+
 
   const handleSignOut = () => {
     signOut(auth)
@@ -18,6 +23,26 @@ const user = useSelector((store)=>store.User)
         // An error happened.
       });
   };
+
+  
+  useEffect(()=>{
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+          // User is signed in, see docs for a list of available properties
+          // https://firebase.google.com/docs/reference/js/auth.user
+          const {uid,email,displayName} = user
+            dispatch(addUser({uid:uid,email:email,displayName:displayName}))
+          // ...
+          navigate('/browse')
+        } else {
+          // User is signed out
+          // ...
+
+          dispatch(removeUser())
+          navigate('/')
+        }
+      });
+},[])
 
   return (
     <div className="absolute bg-gradient-to-b from-black w-[100vw] z-30 flex justify-between">
