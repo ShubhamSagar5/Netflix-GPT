@@ -5,13 +5,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { addUser, removeUser } from "../Utilis/UserSlice";
 import { NETFLIX_LOGO, USER_AVTAR } from "../Utilis/Constant";
+import { toggleGPTSearchView } from "../Utilis/GPTSlice";
 
 const Header = () => {
   
 const navigate = useNavigate()
 const dispatch = useDispatch()
 const user = useSelector((store)=>store.User)
-
+const GPTView = useSelector((store)=>store.GPT.gptView)
 
 
   const handleSignOut = () => {
@@ -49,17 +50,25 @@ const user = useSelector((store)=>store.User)
       }
 },[])
 
+
+const handleGPTView = () => {
+  dispatch(toggleGPTSearchView())
+}
+
+
+
   return (
     <div className="absolute bg-gradient-to-b from-black w-[99%] z-30 flex justify-between no-scrollbar ">
       <div>
         <img
-          className=" w-[200px] p-3 m-3"
+          className=" w-[180px] p-3 m-3"
           src={NETFLIX_LOGO}
           alt="Nelflix Logo"
         />
       </div>
       {
         user && <div className="flex m-4 ">
+        <button className="bg-purple-700 px-4 py-2 mx-2 my-4 rounded-lg" onClick={handleGPTView}> {GPTView ? 'Home' : 'GPT Search'}</button>
         <img
           className=" rounded-lg w-12 h-12 m-2 "
           src={USER_AVTAR}
