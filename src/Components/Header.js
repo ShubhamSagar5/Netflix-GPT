@@ -50,7 +50,7 @@ const user = useSelector((store)=>store.User)
 },[])
 
   return (
-    <div className="absolute bg-gradient-to-b from-black w-[100vw] z-30 flex justify-between">
+    <div className="absolute bg-gradient-to-b from-black w-[99%] z-30 flex justify-between no-scrollbar ">
       <div>
         <img
           className=" w-[200px] p-3 m-3"

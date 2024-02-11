@@ -4,15 +4,21 @@ import Header from "./Header"
 import useNowPlayingMovies from "../CustomHook/useNowPlayingMovies"
 import MainContainer from "./MainContainer"
 import SecondaryContainer from "./SecondaryContainer"
+import usePopuarMovies from "../CustomHook/usePopularMovies"
+import useTopRatedMovies from "../CustomHook/useTopRatedMovis"
+import useUpcomingMovies from "../CustomHook/useUpcomingMovies"
 
 
 
 const Browse = () => {
 
   useNowPlayingMovies()
+  usePopuarMovies()
+  useTopRatedMovies()
+  useUpcomingMovies()
 
     return (
-        <div>
+        <div >
             <Header/>
             <MainContainer/>
             <SecondaryContainer/>

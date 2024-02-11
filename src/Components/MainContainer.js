@@ -8,7 +8,7 @@ const MainContainer = () => {
     
     if(!Movie) return
 
-    const {title,overview,id} = Movie[0]
+    const {title,overview,id} = Movie[2]
     return(
         <div>
         <VideoTitle title={title} overview={overview}/>
