@@ -9,7 +9,7 @@ import {
 import { auth } from "../Utilis/Firebase";
 import { useDispatch } from "react-redux";
 import { addUser } from "../Utilis/UserSlice";
-import { USER_AVTAR } from "../Utilis/Constant";
+import { BG_POSTER_URL, USER_AVTAR } from "../Utilis/Constant";
 
 const Login = () => {
   
@@ -98,12 +98,12 @@ const Login = () => {
   };
 
   return (
-    <div className="">
+    <div>
       <Header />
-      <div className="bgImg absolute">
+      <div className="absolute">
         <img
-          src="https://assets.nflxext.com/ffe/siteui/vlv3/5e16108c-fd30-46de-9bb8-0b4e1bbbc509/29d8d7d7-83cc-4b5f-aa9b-6fd4f68bfaa6/IN-en-20240205-popsignuptwoweeks-perspective_alpha_website_large.jpg"
-          alt=""
+          src={BG_POSTER_URL}
+          alt="BG_POSTER"
         />
       </div>
 
