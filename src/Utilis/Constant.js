@@ -8,7 +8,7 @@ export const API_OPTION  = {
     method: 'GET',
     headers: {
       accept: 'application/json',
-      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyOWMyNDMwYzhkNDg0MWE3NzNiZWJkNWVkZjYyMGM1NSIsInN1YiI6IjY1YzY0MGQ0MmVmZTRlMDE2MjUyMjE2NCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.M6TSg0CIT4Ie6brfSCQQY0-pDldHZZCv-kIZOBDmiUQ'
+      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhM2NlOTgxZTMzNWZlMzMwODQ0NjExY2EwODNkY2NkZSIsInN1YiI6IjY1YzY0MGQ0MmVmZTRlMDE2MjUyMjE2NCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.ZpNQPPTIlh9R6iVtEg2dcJeMYamvat2hxpUEnCsOguo'
     }
   };
 
@@ -24,3 +24,6 @@ export const multiLangauges = [
   {optionValue:"marathi",optionText:"मराठी"},
   {optionValue:"spanish",optionText:"Spanish"},
 ]
+
+
+export const OPENAI_API_KEY = ""
