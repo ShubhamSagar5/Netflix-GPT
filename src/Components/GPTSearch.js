@@ -6,10 +6,10 @@ import GPTSearchBar from "./GPTSearchBar"
 const GPTSearch = () => {
     return(
         <div>
-        <div className="absolute -z-10">
+        <div className=" fixed -z-10">
         <img
           src={BG_POSTER_URL}
-          alt=""
+          alt="Background Poster"
         />
       </div>
             <GPTSearchBar/>

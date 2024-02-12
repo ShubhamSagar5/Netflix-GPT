@@ -38,6 +38,8 @@ const useGPTResults = (searchText) => {
 
        const tmdbResults = await Promise.all(promiseArray)
 
+     
+
         dispatch(addMoviesCollectionAndName({moviesName:GPTResults,moviesCollection:tmdbResults}))
 
     }

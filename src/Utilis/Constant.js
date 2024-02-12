@@ -26,4 +26,4 @@ export const multiLangauges = [
 ]
 
 
-export const OPENAI_API_KEY = ""
+export const OPENAI_API_KEY = process.env.REACT_APP_OPENAPI_KEY
