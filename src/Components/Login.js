@@ -100,18 +100,18 @@ const Login = () => {
   return (
     <div>
       <Header />
-      <div className="absolute">
-        <img
+      <div className="absolute ">
+        <img className=" h-screen object-cover md:w-screen "
           src={BG_POSTER_URL}
           alt="BG_POSTER"
         />
       </div>
-
-      <form
+      <div className=" flex justify-center">
+          <form 
         onSubmit={(e) => e.preventDefault()}
-        className="absolute w-3/12 p-10 bg-black my-36 mx-[530px] text-white bg-opacity-80 rounded-lg"
+        className="absolute w-11/12 md:w-3/12 p-3 bg-black md:mt-[150px]  mt-[130px] text-white bg-opacity-80 rounded-lg"
       >
-        <h2 className=" font-bold text-2xl p-1 my-3">
+        <h2 className=" font-bold text-3xl p-2 md:p-3 md:my-2 my-3">
           {" "}
           {isSignInForm ? "Sign In" : "Sign Up"}
         </h2>
@@ -120,36 +120,38 @@ const Login = () => {
             type="text"
             ref={name}
             placeholder="Enter Full Name"
-            className="w-full bg-gray-800 p-3 my-4 rounded-lg "
+            className="w-full bg-gray-800 p-4 my-3 md:p-3 md:my-3 rounded-lg "
           />
         )}
         <input
           type="text"
           ref={email}
           placeholder="Email Addresss"
-          className="w-full bg-gray-800 p-3 my-4 rounded-lg "
+          className="w-full bg-gray-800 md:p-3 md:my-3 p-4 my-3 rounded-lg"
         />
 
         <input
           type="password"
           ref={password}
           placeholder="Password"
-          className="w-full  bg-gray-800 p-3 my-4 rounded-lg"
+          className="w-full  bg-gray-800 md:p-3 md:my-3 p-4 my-3 rounded-lg"
         />
 
         <button
-          className="bg-red-700 w-full p-3 my-6 rounded-lg"
+          className="bg-red-700 w-full md:p-3 md:my-3 p-4 my-3 rounded-lg"
           onClick={handleValidation}
         >
           {isSignInForm ? "Sign In" : "Sign Up"}
         </button>
         <p className="text-red-700">{errorMess}</p>
-        <p className="p-1 my-3 cursor-pointer" onClick={handleSignInSignUpForm}>
+        <p className="p-1 my-5 cursor-pointer" onClick={handleSignInSignUpForm}>
           {isSignInForm
             ? "New to Netflix? Sign Up Now"
             : "Already Registred? Sign In Now"}
         </p>
       </form>
+      </div>
+    
     </div>
   );
 };

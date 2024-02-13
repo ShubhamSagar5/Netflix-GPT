@@ -8,8 +8,8 @@ const GPTMovieSuggestion = () => {
     
     console.log(moviesName)
     console.log(moviesCollection)
-    return (
-        <div className="p-2 m-4 bg-black opacity-85">
+    return moviesName && (
+        <div className="p-2 m-4 bg-black opacity-90 md:opacity-85">
            {
             moviesName?.map((movie,index)=> (<MovieList key={movie} title={movie} movieData={moviesCollection[index]}/>))
            }
