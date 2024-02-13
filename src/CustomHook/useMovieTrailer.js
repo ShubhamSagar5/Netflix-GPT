@@ -28,9 +28,9 @@ const useMovieTrailer = (movieId) => {
     }
 
     useEffect(()=>{
-       if(!movieTrailer){
+      
         getMoviesVideo()
-    }
+    
     },[])
 }
 

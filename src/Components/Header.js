@@ -7,12 +7,14 @@ import { addUser, removeUser } from "../Utilis/UserSlice";
 import { NETFLIX_LOGO, USER_AVTAR, multiLangauges } from "../Utilis/Constant";
 import { toggleGPTSearchView } from "../Utilis/GPTSlice";
 import { chooseLanguage } from "../Utilis/LanguageSlice";
+import { toggleTrailerView } from "../Utilis/DetailMovieTrailerSlice";
 
 const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const user = useSelector((store) => store.User);
   const GPTView = useSelector((store) => store.GPT.gptView);
+  const TrailerView = useSelector((store)=>store.DetailTrailer?.trailerView)
 
   const handleSignOut = () => {
     signOut(auth)
@@ -63,6 +65,10 @@ const Header = () => {
     dispatch(chooseLanguage(e.target.value));
   };
 
+  const handleTrailerView = () => {
+    dispatch(toggleTrailerView())
+  }
+
   return (
     <div className="absolute bg-gradient-to-b from-black w-[100%] z-30 flex flex-col md:flex-row justify-between ">
       <div>
@@ -74,7 +80,15 @@ const Header = () => {
       </div>
       {user && (
         <div className="flex m-4 ">
-          <button
+          {
+            TrailerView ? <div>
+            <button
+            className="bg-gray-700 px-4 py-2 mx-2 my-4 rounded-lg text-white"
+            onClick={handleTrailerView}
+          >
+            Home
+          </button>
+            </div> :<div><button
             className="bg-gray-700 px-4 py-2 mx-2 my-4 rounded-lg text-white"
             onClick={handleGPTView}
           >
@@ -90,8 +104,10 @@ const Header = () => {
                 <option value={lan.optionValue}>{lan.optionText}</option>
               ))}
             </select>
-          )}
+          )}</div> 
 
+          }
+          
           <img
             className=" rounded-lg w-12 h-12 m-2 "
             src={USER_AVTAR}
