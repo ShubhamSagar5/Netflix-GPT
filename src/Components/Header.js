@@ -73,7 +73,7 @@ const Header = () => {
     <div className="absolute bg-gradient-to-b from-black w-[100%] z-30 flex flex-col md:flex-row justify-between ">
       <div>
         <img
-          className="w-[195px] md:w-[170px] p-3 m-3 mx-auto md:mx-0"
+          className="w-[195px] md:w-[170px] p-3  mx-auto md:mx-0"
           src={NETFLIX_LOGO}
           alt="Nelflix Logo"
         />
@@ -83,13 +83,13 @@ const Header = () => {
           {
             TrailerView ? <div>
             <button
-            className="bg-gray-700 px-4 py-2 mx-2 my-4 rounded-lg text-white"
+            className="bg-gray-700 px-4 py-2 ml-[32px] md:mx-2 my-4 rounded-lg text-white"
             onClick={handleTrailerView}
           >
             Home
           </button>
             </div> :<div><button
-            className="bg-gray-700 px-4 py-2 mx-2 my-4 rounded-lg text-white"
+            className="bg-gray-700 px-4 py-2 mx-[65px] md:mx-2 my-4 rounded-lg text-white"
             onClick={handleGPTView}
           >
             {" "}
@@ -97,7 +97,7 @@ const Header = () => {
           </button>
           {GPTView && (
             <select
-              className="px-4 py-2 my-4 mx-2 rounded-lg bg-gray-700 text-white"
+              className=" px-3 md:px-4 py-2 md:my-4 md:mx-2 ml-[150px] md:ml-0  -pt-[200px]  rounded-lg bg-gray-700 text-white"
               onChange={handleLanguage}
             >
               {multiLangauges.map((lan) => (

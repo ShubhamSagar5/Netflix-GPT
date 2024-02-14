@@ -1,9 +1,9 @@
 import { useDispatch } from "react-redux"
 import { POSTERIMG_URL } from "../Utilis/Constant"
-import { addTrailerId, toggleTrailerView } from "../Utilis/DetailMovieTrailerSlice"
+import { addTrailerId, addTrailerOverView, addTrailerReleaseDate, addtrailerTitle, toggleTrailerView } from "../Utilis/DetailMovieTrailerSlice"
 
  
-const MovieCard = ({posterPath,movieId}) => {
+const MovieCard = ({posterPath,movieId,movieTitle,movieOverView,movieReleaseDate}) => {
     
     
     
@@ -11,7 +11,10 @@ const MovieCard = ({posterPath,movieId}) => {
     const handleTrailerView = () => {
         dispatch(addTrailerId(movieId))
     dispatch(toggleTrailerView())
-    }
+        dispatch(addtrailerTitle(movieTitle))
+        dispatch(addTrailerOverView(movieOverView))
+        dispatch(addTrailerReleaseDate(movieReleaseDate))
+}
     
     
 
